@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1022828217323",
+    "firebase_url": "https://flashchat-e665a.firebaseio.com",
+    "project_id": "flashchat-e665a",
+    "storage_bucket": "flashchat-e665a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022828217323:android:fae6349c73b4a518160fae",
+        "android_client_info": {
+          "package_name": "com.sohel.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022828217323-kcmne78ldlsqds5j4n79994h2v4k6o06.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO5dyqpOUYGQ6JA-pDBDuh2ZjIzIMg6iI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022828217323-kcmne78ldlsqds5j4n79994h2v4k6o06.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
