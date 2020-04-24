@@ -5,7 +5,6 @@ import 'package:flash_chat_flutter/screens/chat_screen.dart';
 import 'package:flash_chat_flutter/screens/login_screen.dart';
 import 'package:flash_chat_flutter/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class WelcomeScreen extends StatefulWidget {
   //const can't be changed
@@ -16,7 +15,6 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
-  bool spinner = false;
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedUser;
   AnimationController controller;
@@ -49,11 +47,11 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     controller.addListener(() {
       setState(() {});
-      print(animationColor.value);
-      print(controller.value);
+      // print(animationColor.value);
+      // print(controller.value);
     });
 
-    getCurrentUser();
+    //getCurrentUser();
   }
 
   void getCurrentUser() async {
@@ -82,53 +80,50 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     return Scaffold(
       //divided by 100 cz opacity is 0-1, bt our upper bound is 100
       backgroundColor: animationColor.value,
-      body: ModalProgressHUD(
-        inAsyncCall: false,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Hero(
-                    tag: 'logo',
-                    child: Container(
-                      child: Image.asset('images/logo.png'),
-                      // height: animation.value * 100,
-                      height: 60,
-                    ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Hero(
+                  tag: 'logo',
+                  child: Container(
+                    child: Image.asset('images/logo.png'),
+                    // height: animation.value * 100,
+                    height: 60,
                   ),
-                  TypewriterAnimatedTextKit(
-                    text: ['Flash Chat'],
-                    textStyle: TextStyle(
-                      fontSize: 45.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w900,
-                    ),
+                ),
+                TypewriterAnimatedTextKit(
+                  text: ['Flash Chat'],
+                  textStyle: TextStyle(
+                    fontSize: 45.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w900,
                   ),
-                ],
-              ),
-              SizedBox(
-                height: 48.0,
-              ),
-              RoundedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginScreen.id);
-                },
-                title: 'Login',
-                color: Colors.lightBlueAccent,
-              ),
-              RoundedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, RegistrationScreen.id);
-                },
-                title: 'Registration',
-                color: Colors.blueAccent,
-              ),
-            ],
-          ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 48.0,
+            ),
+            RoundedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              },
+              title: 'Login',
+              color: Colors.lightBlueAccent,
+            ),
+            RoundedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
+              title: 'Registration',
+              color: Colors.blueAccent,
+            ),
+          ],
         ),
       ),
     );
