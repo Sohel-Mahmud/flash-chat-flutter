@@ -16,6 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   bool spinner = false;
   String email, password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     try {
                       final user = await _auth.signInWithEmailAndPassword(
                           email: email, password: password);
-                      
+
                       if (user != null) {
                         Navigator.pushNamed(context, ChatScreen.id);
                       }
@@ -78,6 +79,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                     } catch (e) {
                       print(e);
+
+                      setState(() {
+                        spinner = false;
+                      });
                     }
                   }
                 },
